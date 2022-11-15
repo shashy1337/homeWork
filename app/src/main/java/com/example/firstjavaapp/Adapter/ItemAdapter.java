@@ -1,7 +1,11 @@
 package com.example.firstjavaapp.Adapter;
 
+import android.annotation.SuppressLint;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,19 +17,17 @@ import java.util.ArrayList;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
 
-    ArrayList<ItemModel> itemModels;
-
-    public ItemAdapter(ArrayList<ItemModel> itemModels) {
-        this.itemModels = itemModels;
-    }
+    private final ArrayList<ItemModel> itemModels = new ArrayList<>();
+    private ItemBinding binding = null;
 
 
-    public class ItemVH extends RecyclerView.ViewHolder {
+    public static class ItemVH extends RecyclerView.ViewHolder {
 
-        private final ItemBinding binding = null;
+        private final ItemBinding binding;
 
         public ItemVH(ItemBinding binding) {
             super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void onBind(ItemModel itemModel) {
@@ -39,7 +41,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
     @NonNull
     @Override
     public ItemVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        com.example.firstjavaapp.databinding.ItemBinding binding = ItemBinding
+        binding = ItemBinding
                 .inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new ItemVH(binding);
     }
@@ -52,6 +54,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
     @Override
     public int getItemCount() {
         return itemModels.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void addData(ArrayList<ItemModel> items){
+        itemModels.addAll(items);
+        notifyDataSetChanged();
     }
 
 }

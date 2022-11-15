@@ -25,14 +25,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMainBinding.inflate(inflater, container, false);
-        /*ArrayList<ItemModel> hands = new ArrayList<>();
-        hands.add(new ItemModel(R.drawable.img, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_1, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        RecyclerView rv = new RecyclerView(requireContext());
-        rv.setAdapter(new ItemAdapter(hands));
-        rv.setLayoutManager(new LinearLayoutManager(requireContext()));*/
-
         return binding.getRoot();
     }
 

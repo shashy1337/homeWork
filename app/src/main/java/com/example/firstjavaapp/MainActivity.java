@@ -16,20 +16,25 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding = null;
+    private final ArrayList<ItemModel> hands = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        ArrayList<ItemModel> hands = new ArrayList<>();
         hands.add(new ItemModel(R.drawable.img, "text", "text"));
         hands.add(new ItemModel(R.drawable.img_1, "text", "text"));
         hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        ItemAdapter adapter = new ItemAdapter();
         RecyclerView rv = binding.rv;
-        rv.setAdapter(new ItemAdapter(hands));
+        rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        adapter.addData(hands);
     }
-
 }
