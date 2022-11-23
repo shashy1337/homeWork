@@ -7,10 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="0dp"
+    <fragment
+        android:id="@+id/myNavHostController"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph = "@navigation/navigation_in_app"
+        app:defaultNavHost = "true"
         app:layout_constraintBottom_toTopOf="@+id/lower_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

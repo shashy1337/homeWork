@@ -6,9 +6,9 @@ import androidx.annotation.DrawableRes;
 public class ItemModel {
 
     @DrawableRes
-    private int picRes;
-    private String title;
-    private String description;
+    private final int picRes;
+    private final String title;
+    private final String description;
 
     public ItemModel(@DrawableRes int picRes, String title, String description){
         this.picRes = picRes;

@@ -5,6 +5,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,25 +19,25 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final ArrayList<ItemModel> hands = new ArrayList<>();
+
+    private  NavController navController = null;
+    private ActivityMainBinding binding = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hands.add(new ItemModel(R.drawable.img, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_1, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        hands.add(new ItemModel(R.drawable.img_2, "text", "text"));
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ItemAdapter adapter = new ItemAdapter();
-        RecyclerView rv = binding.rv;
-        rv.setAdapter(adapter);
-        rv.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        adapter.addData(hands);
+        navController = Navigation.findNavController(this, R.id.myNavHostController);
+        initBottomBar();
+    }
+
+    private void initBottomBar(){
+        NavigationUI.setupWithNavController(binding.lowerMenu, navController);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return navController.navigateUp();
     }
 }
