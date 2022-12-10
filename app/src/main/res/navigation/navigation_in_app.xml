@@ -6,12 +6,30 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.firstjavaapp.MainFragment"
+        android:name="com.example.firstjavaapp.View.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ordersFragment"
-        android:name="com.example.firstjavaapp.OrdersFragment"
+        android:name="com.example.firstjavaapp.View.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/accountFragment2"
+        android:name="com.example.firstjavaapp.View.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.firstjavaapp.View.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="Item"
+            app:argType="com.example.firstjavaapp.Model.ItemModel" />
+    </fragment>
 </navigation>

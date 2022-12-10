@@ -3,6 +3,7 @@ package com.example.firstjavaapp.Adapter;
 import android.annotation.SuppressLint;
 import android.media.Image;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,15 +12,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firstjavaapp.Model.ItemModel;
+import com.example.firstjavaapp.R;
 import com.example.firstjavaapp.databinding.ItemBinding;
+import com.example.firstjavaapp.helper.OnClickListener;
 
 import java.util.ArrayList;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
 
+    private final OnClickListener clickListener;
     private final ArrayList<ItemModel> itemModels = new ArrayList<>();
     private ItemBinding binding = null;
 
+    public ItemAdapter(OnClickListener clickListener){
+        this.clickListener = clickListener;
+    }
 
     public static class ItemVH extends RecyclerView.ViewHolder {
 
@@ -35,7 +42,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
             binding.description.setText(itemModel.getDescription());
             binding.itemPic.setImageResource(itemModel.getPicRes());
         }
-
     }
 
     @NonNull
@@ -49,6 +55,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemVH> {
     @Override
     public void onBindViewHolder(@NonNull ItemVH holder, int position) {
         holder.onBind(itemModels.get(position));
+        holder.binding.itemContainer
+                .setOnClickListener(v -> {
+            clickListener.click(itemModels.get(position));
+        });
     }
 
     @Override

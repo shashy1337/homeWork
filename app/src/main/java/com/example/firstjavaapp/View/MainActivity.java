@@ -1,4 +1,4 @@
-package com.example.firstjavaapp;
+package com.example.firstjavaapp.View;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firstjavaapp.Adapter.ItemAdapter;
 import com.example.firstjavaapp.Model.ItemModel;
+import com.example.firstjavaapp.R;
 import com.example.firstjavaapp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -34,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initBottomBar(){
         NavigationUI.setupWithNavController(binding.lowerMenu, navController);
+    }
+
+    public void launchDetailsFragment(ItemModel itemModel){
+        navController
+                .navigate(MainFragmentDirections
+                        .actionMainFragmentToDetailsFragment(itemModel));
     }
 
     @Override

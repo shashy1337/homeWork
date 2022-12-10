@@ -1,4 +1,4 @@
-package com.example.firstjavaapp;
+package com.example.firstjavaapp.View;
 
 import android.os.Bundle;
 

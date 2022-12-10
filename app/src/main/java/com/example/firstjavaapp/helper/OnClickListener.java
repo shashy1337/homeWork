@@ -1,5 +1,7 @@
-package com.example.firstjavaapp;
+package com.example.firstjavaapp.helper;
+
+import com.example.firstjavaapp.Model.ItemModel;
 
 public interface OnClickListener {
-    void click();
+    void click(ItemModel item);
 }
