@@ -17,7 +17,7 @@ import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class GoogleMavView extends AppCompatActivity {
+public class GoogleMapView extends AppCompatActivity {
     GoogleMap m_googleMap;
     StreetViewPanorama m_StreetView;
 
