@@ -1,5 +1,6 @@
 package com.example.firstjavaapp.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class DetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         DetailsFragmentArgs itemArgs = DetailsFragmentArgs.fromBundle(requireArguments());
         setStuff(itemArgs.getItem());
+        startFabIntent();
     }
 
     @Override
@@ -38,5 +40,14 @@ public class DetailsFragment extends Fragment {
         binding.toolbar.setTitle(item.getTitle());
         binding.itemPic.setImageResource(item.getPicRes());
         binding.description.setText(item.getDescription());
+    }
+
+    private void startFabIntent(){
+        binding.buy.setOnClickListener(
+                v -> {
+                    Intent intent = new Intent(getContext(), GoogleMapActivity.class);
+                    startActivity(intent);
+                }
+        );
     }
 }

@@ -53,7 +53,20 @@
         app:srcCompat = "@drawable/ic_baseline_share_24"
         android:contentDescription="@string/fab"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="#AFAFAF"
+        app:layout_anchor="@id/nested"
+        app:layout_anchorGravity="bottom|end"
+        android:tint="@color/white"
+        app:srcCompat = "@drawable/ic_baseline_attach_money_24"
+        android:contentDescription="@string/fab"/>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
